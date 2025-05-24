@@ -1,0 +1,63 @@
+@import './reset';
+@import './variables';
+@import './breakpoint';
+@import './mixin';
+
+.people-grid-section {
+    width: 100%;
+
+    &__container {
+        width: 100%;
+        max-width: 70rem;
+        margin: 5rem auto;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        column-gap: 2rem;
+        row-gap: 3rem;
+        
+        .people-card {
+            display: flex;
+            flex-direction: column;
+            width: 20rem;
+            border-radius: .2rem;
+            box-shadow: 0 20px 10px 0 rgba(0,0,0,.08);
+            margin: 0 auto;
+            transition: .4s ease-in-out;
+
+            &:hover {
+                box-shadow: 0 20px 30px 0 rgba(0,0,0,.3);
+            }
+
+
+            .image-container {
+                width: 100%;
+                background-color: $grayBackgroundColor;
+                border-radius: .2rem .2rem 0 0;
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            .person-detail {
+                display: flex;
+                flex-direction: column;
+                padding: 2rem;
+                align-items: center;
+
+                h3 {
+                    font-size: 1.5rem;
+                }
+
+                span {
+                    color: $grayTextColor;
+                }
+            }
+        }
+
+        @include xs {
+            padding: 0;
+        }
+    }
+}

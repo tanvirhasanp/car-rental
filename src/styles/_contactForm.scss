@@ -1,0 +1,148 @@
+@import './reset';
+@import './variables';
+@import './breakpoint';
+@import './mixin';
+
+.contactForm-section {
+    width: 100%;
+    max-width: $maxWidth;
+    margin: 0 auto;
+
+    
+    
+    &__container {
+        margin: 0 auto;
+        padding: 5rem 2rem;
+        display: flex;
+        max-width: 80rem;
+        width: 100%;
+        gap: 5rem;
+        background-image: url('../../images/banners/bg-contact.png');
+        background-repeat: no-repeat;
+        background-position: center;
+
+        &>div, &>form {
+            flex: 1 1 0;
+        }
+
+        .contactForm-left {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            h2 {
+                font-size: 2.7rem;
+            }
+
+            p {
+                color: $grayTextColor;
+            }
+
+            ul {
+                @include flexCenter($direction: column, $align-item: normal);
+                gap: 1rem;
+                margin-top: 1rem;
+
+
+                li {
+                    list-style: none;
+                    font-size: 1rem;
+                    @include flexCenter($justify-content: flex-start);
+                    gap: .5rem;
+                    transition: .2s ease-in-out;
+                    
+                    i {
+                        flex-basis: 1.5rem;
+                        text-align: center;
+                    }
+
+                    a {
+                        text-decoration: none;
+                        color: black;
+                        font-weight: $weightBold;
+                        transition: .2s ease-in-out;
+                    }
+
+                    &:hover{
+                        color: $primaryColor;
+
+                        a {
+                            color: $primaryColor;
+                        }
+                    }
+                }
+            }
+        }
+
+        .contactForm-right {
+            display: flex;
+            flex-direction: column;
+
+            label {
+                font-size: 1rem;
+                font-weight: $weightSemiBold;
+                margin-bottom: .5rem;
+                width: fit-content;
+
+                &::after {
+                    content: " *";
+                    color: red;
+                }
+            }
+
+            input, textarea {
+                padding: .8rem 1rem;
+                font-family: inherit;
+                background-color: #f2f2f2;
+                border: solid #f2f2f2;
+                border-radius: .2rem;
+                margin-bottom: 1.5rem;
+                transition: border .2s ease-in-out;
+                resize: vertical;
+
+                &:hover {
+                    border: solid $primaryColor;
+                }
+            }
+
+            textarea {
+                min-height: 10rem;
+            }
+
+            button {
+                padding: .8rem 1rem;
+                font-size: 1rem;
+                font-weight: $weightBold;
+                font-family: inherit;
+                @include flexCenter();
+                gap: .5rem;
+                background-color: $primaryColor;
+                border: none;
+                border-radius: .2rem;
+                box-shadow: $primaryButtonShadow;
+                transition: .3s ease-in-out;
+                color: white;
+                cursor: pointer;
+
+                &:hover {
+                    box-shadow: $primaryButtonHoverShadow;
+                }
+            }
+        }
+
+        @include md {
+            flex-direction: column;
+            text-align: center;
+            gap: 2rem;
+
+            ul {
+                margin-top: 2rem;
+                gap: 1rem !important;
+                li {
+                    justify-content: center !important;
+                }
+            }
+        }
+
+    }
+}

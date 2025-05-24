@@ -1,0 +1,130 @@
+@import './reset';
+@import './variables';
+@import './breakpoint';
+@import './mixin';
+
+.chooseUs-section {
+    width: 100%;
+    padding: 2rem;
+    margin: 0 auto;
+    background-image: url('../../images/chooseUs/bg.png');
+    background-size: cover;
+    // background-position: -225px 255px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    @include flexCenter();
+    
+    &__container {
+        @include flexCenter($direction: column);
+        max-width: $maxWidth;
+
+        .hero-image {
+            width: 100%;
+            max-width: 70rem;
+            height: auto;
+        }
+
+        .chooseUs-details-container {
+            @include flexCenter($justify-content: space-around);
+            width: 100%;
+            gap: 5rem;
+    
+            &__left {
+                flex: 1 1 0;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 0 2rem;
+                max-width: 40rem;
+    
+                h3 {
+                    font-size: 1.5rem;
+                    width: 100%;
+                }
+    
+                h2 {
+                    font-size: 3rem;
+                    line-height: 120%;
+                    margin-bottom: 1.5rem;
+                }
+    
+                p {
+                    color: $grayTextColor;
+                    margin-bottom: 1.5rem;
+                }
+    
+                a {
+                    padding: 1rem 2rem;
+                    text-decoration: none;
+                    color: white;
+                    background-color: $primaryColor;
+                    border-radius: .2rem;
+                    font-weight: $weightVeryBold;
+                    font-size: 1rem;
+                    box-shadow: 0 10px 15px 0 rgba(255, 83, 48, 0.35);
+                    transition: all 0.3s ease-in-out;
+    
+                    i {
+                        margin-left: .3rem;
+                    }
+    
+                    &:hover {
+                        background-color: darken($color: $primaryColor, $amount: 10%);
+                        box-shadow: $primaryButtonHoverShadow;
+                        transform: scale(1.05);
+                    }
+                }
+
+                @include lg {
+                    text-align: center;
+
+                    a {
+                        margin: 0 auto;
+                    }
+                }
+            }
+    
+            &__right {
+                flex: 1 1 0;
+                padding: 0 2rem;
+                max-width: 40rem;
+                @include flexCenter($direction: column);
+                gap: 2rem;
+    
+                &>div {
+                    display: flex;
+                    gap: 1rem;
+
+                    @include md {
+                        flex-direction: column;
+                        align-items: center;
+                        text-align: center;
+                        gap: 0;
+
+                        img {
+                            width: 7rem;
+                        }
+                    }
+                }
+                
+    
+                img {
+                    width: 11rem;
+                    object-fit: contain;
+                }
+
+                .detail {
+                    padding-top: .6rem;
+
+                    @include md {
+                        padding-top: 0;
+                    }
+                }
+            }
+
+            @include lg {
+                flex-direction: column;
+            }
+        }
+    }
+}

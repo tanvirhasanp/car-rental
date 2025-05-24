@@ -1,0 +1,60 @@
+@import './reset';
+@import './variables';
+@import './breakpoint';
+@import './mixin';
+
+.callBanner-section {
+    width: 100%;
+    padding: 5rem 0;
+    position: relative;
+    background-image: url('../../images/banners/bg-1.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    &__overlay {
+        background-color: hsla(0, 0%, 16%, 0.92);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+    }
+
+    &__container {
+        max-width: $maxWidth;
+        margin: 0 auto;
+        padding: 0 2rem;
+        @include flexCenter();
+        gap: 2rem;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        
+        h2 {
+            font-size: 2rem;
+            color: white;
+        }
+
+        span {
+            color: $primaryColor;
+            cursor: pointer;
+            font-size: 1.5rem;
+            
+            a {
+                font-size: 2rem;
+                text-decoration: none;
+                margin-left: .5rem;
+                color: $primaryColor;
+                font-weight: $weightBold;
+            }
+        }
+
+        @include lg {
+            flex-direction: column;
+        }
+    }
+
+    @include lg {
+        padding: 3rem 0;
+    }
+}

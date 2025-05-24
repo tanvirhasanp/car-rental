@@ -1,0 +1,103 @@
+@import './reset';
+@import './variables';
+@import './breakpoint';
+@import './mixin';
+
+.faq-section {
+    width: 100%;
+    margin: 0 auto;
+    
+    background-image: url('../../images/faq/car.png');
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+
+    &__container {
+        max-width: $maxWidth;
+        padding: 0 2rem;
+        margin: 3rem auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 2rem;
+        
+        &__heading {
+            text-align: center;
+            max-width: 50rem;
+            margin: 0 auto;
+
+            h3 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 2.7rem;
+                margin-bottom: 1rem;
+            }
+
+            p {
+                color: $grayTextColor;
+            }
+        }
+
+        &__questions__container {
+            max-width: 50rem;
+            margin: 2rem auto;
+            box-shadow: 0 10px 15px 0 rgba(0,0,0,.1);
+
+            .question-container {
+
+                &__heading {
+                    max-width: 50rem;
+                    @include flexCenter($justify-content: space-between);
+                    padding: 1rem 2rem;
+                    background-color: white;
+                    box-shadow: 0 3px 6px 0 rgba(0,0,0,.1);
+                    cursor: pointer;
+                    position: relative;
+                    z-index: 1;
+                    gap: 1rem;
+                    transition: .2s ease-in-out;
+                    
+                    h4 {
+                        font-size: 1.2rem;
+                        font-weight: $weightSemiBold;
+                    }
+                    
+                    i {
+                        font-size: 1.2rem;
+                        transition: transform .2s ease-in;
+
+                        &.active {
+                            transform: rotate(180deg);
+                        }
+                    }
+                    
+                    &.active, &:hover{
+                        color: white;
+                        background-color: $primaryColor;
+                        box-shadow: $primaryButtonHoverShadow;
+                    }
+                }
+
+                .answer-container {
+                    display: grid;
+                    grid-template-rows: 0fr;
+                    color: $grayTextColor;
+                    background-color: white;
+                    transition: .3s ease-out;
+
+                    p { 
+                        overflow: hidden;
+                        padding: 0 2rem;
+                    }
+
+                    &.active {
+                        padding: 2rem 0;
+                        grid-template-rows: 1fr;
+                    }
+                }
+                
+            }
+        }
+    }
+}

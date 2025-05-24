@@ -1,0 +1,347 @@
+@import './reset';
+@import './variables';
+@import './breakpoint';
+@import './mixin';
+
+.booking-popup {
+    position: relative;
+    overflow: scroll;
+
+    &__overlay {
+        position: fixed;
+        visibility: hidden;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 10;
+        transition: .2s ease-in-out;
+
+        &.active {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+
+    &__container {
+        position: fixed;
+        z-index: 20;
+        border: white solid;
+        top: 55%;
+        height: 100vh;
+        transform: translate(-50%, 50%);
+        left: 50%;
+        width: 100%;
+        max-width: 55rem;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        overflow: scroll;
+        transition: .5s ease-in-out;
+        visibility: hidden;
+
+        &.active {
+            visibility: visible;
+            transform: translate(-50%, -50%);
+        }
+        
+        .content {
+            overflow: scroll;
+
+            &.successful {
+                overflow: hidden;
+                height: 100vh;
+            }
+
+            .booking-successful {
+                margin: 0 auto;
+                text-align: center;
+                display: none;
+                transform: translate(-50%, -50%);
+                left: 50%;
+                top: 50%;
+                position: relative;
+                i {
+                    color: rgb(1, 180, 1);
+                    font-size: 4rem;
+                    margin-bottom: 1rem;
+                }
+    
+                p {
+                    font-size: 1.5rem;
+                    font-weight: $weightBold;
+                    margin-bottom: 1rem;
+                }
+
+                button {
+                    padding: .8rem 2rem;
+                    background-color: $primaryColor;
+                    font-family: inherit;
+                    font-weight: $weightSemiBold;
+                    font-size: 1.2rem;
+                    color: white;
+                    border-radius: .2rem;
+                    border: none;
+                    box-shadow: $primaryButtonShadow;
+                    transition: .2s ease-in-out;
+                    cursor: pointer;
+
+                    &:hover {
+                        box-shadow: $primaryButtonHoverShadow;
+                        transform: scale(1.05);
+                    }
+
+                    &:active {
+                        transform: scale(.95);
+                    }
+                }
+                
+                &.successful {
+                    display: block;
+                }
+            }
+        }
+
+        .title {
+            color: $primaryColor;
+        }
+
+        &__header {
+            background-color: $primaryColor;
+            display: flex;
+            justify-content: space-between;
+            padding: .5rem 1rem;
+            align-items: center;
+            color: white;
+
+            i {
+                font-size: 1.7rem;
+                cursor: pointer;
+                transition: .2s ease-in-out;
+
+                &:hover {
+                    transform: scale(1.2);
+                }
+            }
+        }
+
+        &__info {
+            background-color: #ffeae6;
+            padding: 1rem 2rem;
+
+            h3 {
+                color: $primaryColor;
+                margin-bottom: 1rem;
+            }
+
+            p {
+                color: $grayTextColor;
+                font-weight: $weightSemiBold;
+            }
+
+            &.successful {
+                display: none;
+            }
+        }
+
+        &__details {
+            display: flex;
+            padding: 1rem 2rem;
+            border-bottom: solid $inputBackgroundColor;
+            gap: 2rem;
+
+            &.successful {
+                display: none;
+            }
+            
+            &__left {
+                flex: 1 1 0;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+
+
+                .location, .date {
+                    color: $grayTextColor;
+                }
+
+                
+                &>div {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2rem;
+                    
+                    .asterisk {
+                        color: red;
+                    }
+
+                    &>div {
+                        display: flex;
+                        gap: .8rem;
+
+                        i {
+                            font-size: 1.5rem;
+                            color: $grayTextColor;
+                        }
+                    }
+                }
+            }
+
+            &__right {
+                flex: 1 1 0;
+                display: flex;
+                flex-direction: column;
+
+                span {
+                    color: $primaryColor;
+                }
+
+                img {
+                    width: 100%;
+                    max-width: 30rem;
+                    align-self: center;
+                    justify-self: center;
+                    margin: auto;
+                }
+            }
+
+            @include sm {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+
+        &__form-container {
+            padding: 1rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            &.successful {
+                display: none;
+            }
+
+            .input-container::after {
+                content: 'This field is required.';
+                font-size: .7rem;
+                display: block;
+            }
+
+            &__form {
+
+                label::after {
+                    content: ' *';
+                    color: red;
+                }
+
+                .top {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+                    column-gap: 1rem;
+                    row-gap: 1.6rem;
+
+                    & > div {
+                        display: flex;
+                        flex-direction: column;
+                        gap: .3rem;
+
+                        input {
+                            @include formInput();
+                        }
+                    }
+
+                }
+
+                .middle {
+                    display: grid;
+                    row-gap: 1.6rem;
+                    grid-template-columns: 1fr;
+                    padding-top: 1.6rem;
+
+                    & > div {
+                        display: flex;
+                        flex-direction: column;
+                        gap: .3rem;
+
+                        input {
+                            @include formInput();
+                        }
+                    }
+                }
+
+                .bottom {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+                    column-gap: 1rem;
+                    row-gap: 1.6rem;
+                    padding-top: 1.6rem;
+
+                    & > div {
+                        display: flex;
+                        flex-direction: column;
+                        gap: .3rem;
+
+                        input {
+                            @include formInput();
+                        }
+                    }
+                }
+
+                .news-check {
+                    display: flex;
+                    gap: .5rem;
+                    padding-top: 1.6rem;
+                    
+                    .news-checkbox {
+                        width: 1.2rem;
+                        flex-shrink: 0;
+                    }
+                    label::after {
+                        content: '';
+                    }
+                }
+            }
+
+            .invalid-container {
+                @include accordion();
+            }
+
+            .submit-container {
+                display: flex;
+                justify-content: end;
+                padding: 2rem 0;
+                margin-bottom: 3rem;
+
+                button {
+                    padding: .5rem 1.5rem;
+                    font-size: 1.4rem;
+                    font-family: inherit;
+                    background-color: $primaryColor;
+                    color: white;
+                    font-weight: $weightBold;
+                    border: solid yellow;
+                    cursor: pointer;
+                    transition: .3s ease-in-out;
+
+                    &:hover {
+                        transform: scale(1.05);
+                    }
+
+                    &:active {
+                        transform: scale(.95);
+                    }
+                }
+            }
+        }
+
+        @include md {
+            top: 50%;
+            border: none;
+        }
+    }
+}

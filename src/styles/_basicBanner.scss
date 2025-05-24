@@ -1,0 +1,27 @@
+@import './reset';
+@import './variables';
+@import './breakpoint';
+@import './mixin';
+
+.basicBanner {
+    width: 100%;
+    background-color: #2d2d2d;
+    text-align: center;
+    padding: 3rem 2rem;
+
+    h2 {
+        font-size: 3rem;
+        color: white;
+        margin-bottom: 1rem;
+    }
+
+    h3 {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: $weightNormal;
+
+        span {
+            color: $primaryColor;
+        }
+    }
+}

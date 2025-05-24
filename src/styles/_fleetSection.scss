@@ -1,0 +1,181 @@
+@import './reset';
+@import './variables';
+@import './breakpoint';
+@import './mixin';
+
+.fleet-section {
+    width: 100%;
+    max-width: $maxWidth;
+    margin: 5rem auto 2rem auto;
+    @include flexCenter();
+    
+    &__container {
+        padding: 2rem;
+        @include flexCenter($direction: column);
+        width: 100%;
+
+        .fleet-heading-container {
+            @include flexCenter($direction: column);
+
+            h3 {
+                font-size: 1.5rem;
+                font-weight: $weightBold;
+            }
+
+            h2 {
+                font-size: 2.8rem;
+            }
+
+            p {
+                text-align: center;
+                color: $grayTextColor;
+            }
+
+            @include xs {
+                text-align: center;
+            }
+        }
+
+        .fleet-car-container {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            padding: 3rem;
+
+            &__buttons {
+                display: flex;
+                flex-direction: column;
+                gap: .5rem;
+
+                button {
+                    padding: .8rem 1rem;
+                    background-color: $grayBackgroundColor;
+                    font-family: $font;
+                    font-weight: $weightBold;
+                    font-size: 1.3rem;
+                    color: black;
+                    border: solid $grayBackgroundColor;
+                    text-align: center;
+                    transition: all .2s ease-in-out;
+
+                    &.active, &:hover {
+                        color: white;
+                        border: solid $primaryColor;
+                        background-color: $primaryColor;
+                        cursor: pointer;
+                    }
+
+                    @include xs {
+                        font-size: 1.1rem;
+                    }
+
+                }
+            }
+                
+
+            .image-container {
+                width: 35rem;
+                margin: 0 2rem;
+                display: flex;
+                align-self: center;
+                align-items: center;
+
+                img {
+                    width: 100%;
+                    object-fit: cover;
+                }
+
+                @include md {
+                    height: 350px;
+                }
+
+                @include sm {
+                    height: 250px;
+                }
+
+                @include xs {
+                    height: 180px;
+                }
+            }
+
+            .details-container {
+                @include flexCenter($direction: column);
+                width: 20rem;
+                align-self: flex-start;
+
+                .pricePerDay-container {
+                    background-color: $primaryColor;
+                    padding: .5rem 1rem;
+                    width: 100%;
+                    text-align: center;
+                    color: white;
+                    font-size: 1.5rem;
+                    
+                    span {
+                        font-weight: $weightVeryBold;
+                        width: 3rem;
+                        display: inline-block;
+                    }
+                }
+
+                .detail-table {
+                    display: flex;
+                    width: 100%;
+                    border-left: 2px solid black;
+                    border-right: 2px solid black;
+                    border-bottom: 2px solid black;
+                    min-width: 15rem;
+
+                    span {
+                        width: 50%;
+                        text-align: center;
+                        margin: .5rem 0;
+                        font-weight: $weightBold;
+                        padding: 0 .2rem;
+                    }
+
+                    .table-option {
+                        border-right: 2px solid black;
+                    }
+                }
+
+                a {
+                    margin-top: 1rem;
+                    padding: .5rem;
+                    background-color: $primaryColor;
+                    text-decoration: none;
+                    color: white;
+                    box-shadow: 6px 6px 0 #efe9e9;
+                    width: 100%;
+                    text-align: center;
+                    font-weight: $weightBold;
+                    font-size: 1.2rem;
+                    transition: all .2s ease-in-out;
+
+                    &:hover {
+                        transform: translate(-3px, -3px);
+                        box-shadow: 12px 12px 0 #efe9e9;
+                    }
+                }
+            }
+
+            @include lg {
+                flex-wrap: wrap;
+                row-gap: 1rem;
+
+                div:nth-child(-n + 2) {
+                    flex: 1 0 50%;
+                }
+
+                div:last-child {
+                    flex: 1;
+                    margin: 0 auto;
+                }
+            }
+        }
+
+
+
+
+    }
+}

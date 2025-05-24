@@ -1,0 +1,29 @@
+@mixin flexCenter($direction: row, $justify-content: center, $align-item: center) {
+  display: flex;
+  justify-content: $justify-content;
+  align-items: $align-item;
+  flex-direction: $direction;
+}
+
+@mixin formInput {
+  padding: .7rem 1rem;
+  background-color: $inputBackgroundColor;
+  border: solid $inputBackgroundColor;
+  border-radius: .2rem;
+  transition: .2s ease-in-out;
+  font-family: inherit;
+
+  &:hover {
+      border: solid $primaryColor;
+  }
+}
+
+@mixin accordion {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: .2s ease-in-out;
+
+  &.active {
+      grid-template-rows: 1fr;
+  }
+}
