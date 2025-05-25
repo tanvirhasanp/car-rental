@@ -7,6 +7,8 @@ import Testimonials from "./pages/Testimonials";
 import Team from "./pages/Team";
 import Contact from "./pages/Contact";
 import ErrorPage from "./pages/ErrorPage";
+import SignIn from "./pages/SignIn";
+import Register from "./pages/Register";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -17,6 +19,8 @@ const router = createBrowserRouter(
       <Route path='testimonials' element={<Testimonials />} />
       <Route path='team' element={<Team />} />
       <Route path='contact' element={<Contact />} />
+      <Route path='signin' element={<SignIn />} />
+      <Route path='register' element={<Register />} />
 
       <Route path="*" element={<ErrorPage />} />
     </Route>
@@ -24,7 +28,9 @@ const router = createBrowserRouter(
 )
 function App() {
   return (
+    
     <RouterProvider router={router} />
+    
   );
 }
 
